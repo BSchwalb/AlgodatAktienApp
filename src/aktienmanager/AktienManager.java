@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -95,7 +96,7 @@ public class AktienManager {
                 break;
             case "LOAD":
                 try (BufferedReader reader = new BufferedReader(new FileReader(args[0]))) {
-                    String lines[] = Files.readAllLines(Paths.get(args[0])).toArray(new String[0]);
+                    String lines[] = Files.readAllLines(Paths.get(args[0]), Charset.defaultCharset()).toArray(new String[0]);
                     stockHashMap = new StockHashMap(lines);
                 } catch (IOException ex) {
                     Logger.getLogger(AktienManager.class.getName()).log(Level.SEVERE, null, ex);
